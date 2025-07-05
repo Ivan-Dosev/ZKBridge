@@ -9,46 +9,49 @@ ZKBridge is a decentralized application (dApp) that allows users to seamlessly s
 Below is a simplified visualization of the cross-chain bridge process:
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant U as User
-    participant S as Source Chain
-    participant V as ZKP Verifier
-    participant T as Target Chain
+graph TB
+    subgraph "🔄 Cross-Chain Bridge Process"
+        subgraph "1️⃣ Deposit Phase" 
+            A[User] -->|Initiate deposit| B[Source Chain]
+            B -->|Lock tokens| C[Generate ZKP commitment]
+            C -->|Confirm deposit| A
+        end
 
-    Note over U,T: 🔄 Cross-Chain Bridge Process
+        subgraph "2️⃣ Verification Phase"
+            D[User] -->|Request proof| E[ZKP Verifier]
+            E -->|Generate proof| F[Return proof & nullifier]
+            F -->|Prove ownership| D
+        end
 
-    %% Deposit Phase
-    rect rgb(230, 240, 255)
-        Note over U,T: 1️⃣ Deposit Phase
-        U->>S: Initiate deposit
-        Note right of U: Generate ZKP commitment
-        S->>S: Verify & lock tokens
-        S-->>U: Confirm deposit
+        subgraph "3️⃣ Withdrawal Phase"
+            G[User] -->|Submit withdrawal| H[Target Chain]
+            H -->|Verify proof| I[Check nullifier]
+            I -->|Process withdrawal| J[Release tokens]
+            J -->|Complete| G
+        end
+
+        subgraph "🌟 Bridge Features"
+            K[1% Bridge Fee]
+            L[12% APY Staking]
+            M[Zero-Knowledge Privacy]
+            N[Cross-Chain Security]
+        end
     end
 
-    %% Verification Phase
-    rect rgb(255, 240, 230)
-        Note over U,T: 2️⃣ Verification Phase
-        U->>V: Request ZKP generation
-        Note right of U: Prove ownership
-        V-->>U: Return proof & nullifier
-    end
-
-    %% Withdrawal Phase
-    rect rgb(230, 255, 240)
-        Note over U,T: 3️⃣ Withdrawal Phase
-        U->>T: Submit withdrawal request
-        Note right of T: Verify proof & check nullifier
-        T->>T: Process withdrawal
-        T-->>U: Release tokens
-    end
-
-    %% Bridge Features
-    rect rgb(240, 240, 255)
-        Note over U,T: 🌟 Bridge Features
-        Note over S,T: • 1% Bridge Fee<br/>• 12% APY Staking<br/>• Zero-Knowledge Privacy<br/>• Cross-Chain Security
-    end
+    style A fill:#e6f0ff,stroke:#4facfe
+    style B fill:#e6f0ff,stroke:#4facfe
+    style C fill:#e6f0ff,stroke:#4facfe
+    style D fill:#ffe6e6,stroke:#ff9999
+    style E fill:#ffe6e6,stroke:#ff9999
+    style F fill:#ffe6e6,stroke:#ff9999
+    style G fill:#e6ffe6,stroke:#66cc66
+    style H fill:#e6ffe6,stroke:#66cc66
+    style I fill:#e6ffe6,stroke:#66cc66
+    style J fill:#e6ffe6,stroke:#66cc66
+    style K fill:#f0f0ff,stroke:#9999ff
+    style L fill:#f0f0ff,stroke:#9999ff
+    style M fill:#f0f0ff,stroke:#9999ff
+    style N fill:#f0f0ff,stroke:#9999ff
 ```
 
 The bridge operates in three main phases:
