@@ -1,125 +1,202 @@
-# ZKBridge - Cross-Chain Bridge with Zero-Knowledge Proofs
+# NeoX - Cross-Chain Token Bridge
 
-A decentralized cross-chain bridge application that enables secure token transfers between different blockchain networks using zero-knowledge proofs.
+## Overview
+
+NeoX is a decentralized application (dApp) that allows users to seamlessly swap tokens across multiple blockchains. With a focus on security and user experience, NeoX leverages Zero-Knowledge Proofs (ZKPs) to ensure that transactions are both private and verifiable.
+
+## Supported Networks
+
+NeoX now supports token swapping across **4 testnet networks**:
+
+- **Mantle Sepolia** (Mantle Testnet)
+- **Flow Testnet** (Flow EVM Testnet)
+- **Ronin Testnet** (Saigon Testnet)
+- **Flare Coston2** (Flare Testnet)
+
+## Smart Contract Addresses
+
+### Deployed Bridge Contracts
+
+| Network | TestVerifier Contract | BridgeWithZKP Contract |
+|---------|----------------------|------------------------|
+| **Mantle Sepolia** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
+| **Flow Testnet** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
+| **Ronin Testnet** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
+| **Flare Coston2** | Pending deployment 🔄 | Pending deployment 🔄 |
+
+*Note: Some contract addresses are the same across networks due to deterministic deployment.*
+
+### Network Configuration
+
+| Network | Chain ID | Native Token | RPC Endpoint |
+|---------|----------|--------------|--------------|
+| Mantle Sepolia | 5003 | MNT | `https://rpc.sepolia.mantle.xyz` |
+| Flow Testnet | 545 | FLOW | `https://testnet.evm.nodes.onflow.org` |
+| Ronin Testnet | 2021 | RON | `https://saigon-testnet.roninchain.com/rpc` |
+| Flare Coston2 | 114 | C2FLR | `https://coston2-api.flare.network/ext/C/rpc` |
 
 ## Features
 
-- 🔒 Secure cross-chain transfers with ZK proofs
-- 💱 Support for multiple networks:
-  - Mantle Sepolia (Chain ID: 5003)
-  - Flow Testnet (Chain ID: 545)
-  - Ronin Testnet (Chain ID: 2021)
-  - Flare Testnet (Chain ID: 114)
-  - Saga Test/Demo networks
-- 🌉 User-friendly bridge interface
-- 💰 Staking functionality (coming soon)
-- 🔄 Real-time price feeds via Supra Oracle
+- **Cross-Chain Swapping**: Easily swap tokens between 4 supported testnet blockchains.
+- **Zero-Knowledge Proofs**: Enhanced privacy and security for transactions.
+- **1:1 Token Conversion**: Simplified cross-chain swaps with 1% bridge fee.
+- **Staking**: Earn up to 12% APY by staking your tokens (coming soon).
+- **User-Friendly Interface**: Intuitive design for a smooth user experience.
 
-## Prerequisites
+## Technologies Used
 
-- Node.js v16+ (Note: v23.11.0 has some compatibility warnings with Hardhat)
-- MetaMask or compatible Web3 wallet
-- Test tokens on supported networks
+- **React**: Frontend framework for building the user interface.
+- **Zero-Knowledge Proofs (ZKPs)**: A cryptographic method used to enhance privacy and security in transactions. ZKPs allow one party to prove to another that a statement is true without revealing any additional information. In NeoX, ZKPs are used to ensure that token swaps are secure and private.
+- **Ethers.js v6**: Library for interacting with Ethereum-compatible blockchains.
+- **Styled Components**: For styling React components.
+- **Hardhat 2.25.0**: Development environment for Ethereum smart contracts.
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm (Node Package Manager)
+
+### Installation
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/Ivan-Dosev/ZKBridge.git
-cd ZKBridge
+git clone https://github.com/yourusername/neox.git
+cd neox
 ```
 
-2. Install dependencies:
+2. Install the dependencies:
+
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
-3. Create a `.env` file in the root directory with the following variables:
-```env
+3. Set up your environment variables:
+
+Create a `.env` file in the root directory and add the following:
+
+```plaintext
 PRIVATE_KEY=your_private_key
-REACT_APP_MANTLE_SEPOLIA_BRIDGE_ADDRESS=your_bridge_address
-REACT_APP_MANTLE_SEPOLIA_VERIFIER_ADDRESS=your_verifier_address
-REACT_APP_FLOW_TESTNET_BRIDGE_ADDRESS=your_bridge_address
-REACT_APP_RONIN_TESTNET_BRIDGE_ADDRESS=your_bridge_address
-REACT_APP_FLARE_TESTNET_BRIDGE_ADDRESS=your_bridge_address
-REACT_APP_SAGA_TEST_BRIDGE_ADDRESS=your_bridge_address
-REACT_APP_SAGA_DEMO_BRIDGE_ADDRESS=your_bridge_address
+
+# Bridge Contract Addresses
+REACT_APP_MANTLE_SEPOLIA_VERIFIER_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
+REACT_APP_MANTLE_SEPOLIA_BRIDGE_ADDRESS=0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9
+REACT_APP_FLOW_TESTNET_VERIFIER_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
+REACT_APP_FLOW_TESTNET_BRIDGE_ADDRESS=0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9
+REACT_APP_RONIN_TESTNET_VERIFIER_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
+REACT_APP_RONIN_TESTNET_BRIDGE_ADDRESS=0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9
+REACT_APP_FLARE_TESTNET_VERIFIER_ADDRESS=your_flare_verifier_address
+REACT_APP_FLARE_TESTNET_BRIDGE_ADDRESS=your_flare_bridge_address
 ```
 
-## Smart Contract Deployment
-
-1. Deploy to Mantle Sepolia:
-```bash
-npx hardhat run scripts/deploy.js --network mantle-sepolia
-```
-
-2. Deploy to other networks:
-```bash
-npx hardhat run scripts/deploy.js --network [network-name]
-```
-
-Available networks: `flow-testnet`, `ronin-testnet`, `flare-testnet`, `saga-test`, `saga-demo`
-
-## Running the Frontend
+### Running the Application
 
 1. Start the development server:
+
 ```bash
 npm start
 ```
 
-2. Open [http://localhost:3000](http://localhost:3000) in your browser
+2. Open your browser and navigate to `http://localhost:3000` or `https://neox.thedrop.top`
 
-## Architecture
+## 🚨 Important Information 🚨
 
-### Smart Contracts
-- `BridgeWithZKP.sol`: Main bridge contract handling deposits and withdrawals
-- `TestVerifier.sol`: ZK proof verification contract
-- `IZKPVerifier.sol`: Interface for verifier contracts
-- `SupraOracle.sol`: Price feed integration
+**When testing the bridge and swapping tokens, please make sure that the contract bridge has enough balance to cover the transaction amount, otherwise you will get an error alert and failing transaction.**
 
-### Frontend Components
-- `SwapInterface.js`: Main swap interface
-- `BridgeInterface.js`: Bridge functionality
-- `TokenSelector.js`: Token selection component
-- `WalletConnect.js`: Wallet connection handling
+**The bridge now uses 1:1 token conversion with a 1% bridge fee for simplified cross-chain swaps.**
+
+## Usage
+
+1. Connect your wallet (e.g., MetaMask).
+2. Select the source and destination networks.
+3. Enter the amount you wish to swap.
+4. Review the bridge fee (1% of the swap amount).
+5. Click on the "Swap" button to initiate the transaction.
+6. Optionally, explore the staking feature (coming soon).
 
 ## Testing
 
-Run tests with Hardhat:
+To run tests, use the following command:
+
 ```bash
 npx hardhat test
 ```
 
-For specific test files:
+## Deployment
+
+### Deploy to All Networks
+
+To deploy contracts to all supported networks:
+
 ```bash
-npx hardhat test test/TokenSwap.test.js
+node scripts/deploy-all-networks.js
 ```
 
-## Security
+### Deploy to Specific Networks
 
-- Zero-knowledge proofs ensure secure cross-chain transfers
-- Nullifier hashes prevent double-spending
-- Oracle integration for accurate price feeds
-- Timelock mechanisms for added security
+```bash
+npx hardhat run scripts/deploy-multichain.js --network mantle-sepolia
+npx hardhat run scripts/deploy-multichain.js --network flow-testnet
+npx hardhat run scripts/deploy-multichain.js --network ronin-testnet
+npx hardhat run scripts/deploy-multichain.js --network flare-coston2
+```
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
+
+# Token Swap Process
+
+This section describes the process of swapping tokens between different chains using our application.
+
+## Sequence Diagram
+```mermaid
+sequenceDiagram
+participant User
+participant Wallet
+participant SwapInterface
+participant SourceBridge
+participant TargetBridge
+User->>SwapInterface: Input amount and select tokens
+SwapInterface->>SwapInterface: Calculate fee (1%)
+SwapInterface->>SwapInterface: Calculate output amount (1:1 - fee)
+SwapInterface->>User: Display output amount
+User->>SwapInterface: Click "Swap" button
+SwapInterface->>Wallet: Request wallet connection
+Wallet-->>SwapInterface: Wallet connected
+SwapInterface->>SwapInterface: Generate ZK Proof
+SwapInterface->>SwapInterface: Switch to source network
+SwapInterface->>SourceBridge: Deposit tokens
+SwapInterface->>SourceBridge: deposit(commitment, { value: transferAmount })
+SourceBridge-->>SwapInterface: Transaction confirmed
+SwapInterface->>SwapInterface: Switch to target network
+SwapInterface->>TargetBridge: Withdraw tokens
+SwapInterface->>TargetBridge: withdraw(targetAmount, address, nullifierHash, proof)
+TargetBridge-->>SwapInterface: Transaction confirmed
+SwapInterface->>User: Display success message
+```
+
+## Roadmap 🗺️
+
+1. **Cross-Chain Integration** : Add support for additional blockchains to broaden token swapping capabilities.
+2. **Enhanced Staking Features**: Introduce new staking options and yield farming opportunities to incentivize user engagement and liquidity provision.
+3. **Educational Initiatives** : Create tutorials and guides to help users understand how to use the platform and the benefits of using ZKPs in DeFi.
+4. **Partnerships with DeFi Projects** : Collaborate with other DeFi projects to create synergies and enhance the platform's offerings.
+
+## Business model 📈
+
+- **Staking Rewards** : Users can provide liquidity to the bridge by staking their tokens in the bridge, thus they can earn rewards every time a transaction is made. The rewards are made from the transaction fees.
+- **Transaction Fees** : Users pay a 1% fee for each cross-chain transaction made through the bridge.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Mantle Network
-- Flow Blockchain
-- Ronin Chain
-- Flare Network
-- Saga
-- Supra Oracle
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
