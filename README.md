@@ -4,6 +4,51 @@
 
 ZKBridge is a decentralized application (dApp) that allows users to seamlessly swap tokens across multiple blockchains. With a focus on security and user experience, ZKBridge leverages Zero-Knowledge Proofs (ZKPs) to ensure that transactions are both private and verifiable.
 
+## Flow Diagram
+
+The following diagram illustrates the cross-chain token transfer process:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Source as Source Chain Bridge
+    participant Verifier as ZKP Verifier
+    participant Target as Target Chain Bridge
+    
+    rect rgb(40, 44, 52)
+        Note over User,Target: Deposit Phase
+        User->>+Source: deposit(commitment)
+        Note right of User: Generates ZKP commitment<br/>from amount and address
+        Source->>Source: Store deposit details
+        Source-->>-User: Emit DepositCreated
+    end
+
+    rect rgb(40, 44, 52)
+        Note over User,Target: Verification Phase
+        User->>+Verifier: Generate ZKP Proof
+        Note right of User: Proves ownership without<br/>revealing details
+        Verifier-->>-User: Return proof & nullifierHash
+    end
+
+    rect rgb(40, 44, 52)
+        Note over User,Target: Withdrawal Phase
+        User->>+Target: withdraw(amount, recipient,<br/>nullifierHash, proof)
+        Target->>Target: Verify proof & check<br/>nullifier not used
+        Target->>Target: Transfer tokens
+        Target-->>-User: Emit WithdrawalExecuted
+    end
+
+    rect rgb(59, 129, 246)
+        Note over User,Target: Bridge Features
+        Note right of Source: • 1% Bridge Fee<br/>• 12% APY Staking<br/>• Zero-Knowledge Privacy<br/>• Cross-Chain Security
+    end
+```
+
+The bridge process consists of three main phases:
+1. **Deposit Phase**: User deposits tokens on the source chain by creating a commitment
+2. **Verification Phase**: Zero-knowledge proof is generated to prove ownership
+3. **Withdrawal Phase**: User withdraws tokens on the target chain by providing the proof
+
 ## Environment Setup
 
 Create a `.env` file in the project root with the following configuration:
