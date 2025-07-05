@@ -6,48 +6,67 @@ ZKBridge is a decentralized application (dApp) that allows users to seamlessly s
 
 ## Flow Diagram
 
-The following diagram illustrates the cross-chain token transfer process:
+Below is a simplified visualization of the cross-chain bridge process:
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Source as Source Chain Bridge
-    participant Verifier as ZKP Verifier
-    participant Target as Target Chain Bridge
-    
-    rect rgb(40, 44, 52)
-        Note over User,Target: Deposit Phase
-        User->>+Source: deposit(commitment)
-        Note right of User: Generates ZKP commitment<br/>from amount and address
-        Source->>Source: Store deposit details
-        Source-->>-User: Emit DepositCreated
+    autonumber
+    participant U as User
+    participant S as Source Chain
+    participant V as ZKP Verifier
+    participant T as Target Chain
+
+    Note over U,T: 🔄 Cross-Chain Bridge Process
+
+    %% Deposit Phase
+    rect rgb(230, 240, 255)
+        Note over U,T: 1️⃣ Deposit Phase
+        U->>S: Initiate deposit
+        Note right of U: Generate ZKP commitment
+        S->>S: Verify & lock tokens
+        S-->>U: Confirm deposit
     end
 
-    rect rgb(40, 44, 52)
-        Note over User,Target: Verification Phase
-        User->>+Verifier: Generate ZKP Proof
-        Note right of User: Proves ownership without<br/>revealing details
-        Verifier-->>-User: Return proof & nullifierHash
+    %% Verification Phase
+    rect rgb(255, 240, 230)
+        Note over U,T: 2️⃣ Verification Phase
+        U->>V: Request ZKP generation
+        Note right of U: Prove ownership
+        V-->>U: Return proof & nullifier
     end
 
-    rect rgb(40, 44, 52)
-        Note over User,Target: Withdrawal Phase
-        User->>+Target: withdraw(amount, recipient,<br/>nullifierHash, proof)
-        Target->>Target: Verify proof & check<br/>nullifier not used
-        Target->>Target: Transfer tokens
-        Target-->>-User: Emit WithdrawalExecuted
+    %% Withdrawal Phase
+    rect rgb(230, 255, 240)
+        Note over U,T: 3️⃣ Withdrawal Phase
+        U->>T: Submit withdrawal request
+        Note right of T: Verify proof & check nullifier
+        T->>T: Process withdrawal
+        T-->>U: Release tokens
     end
 
-    rect rgb(59, 129, 246)
-        Note over User,Target: Bridge Features
-        Note right of Source: • 1% Bridge Fee<br/>• 12% APY Staking<br/>• Zero-Knowledge Privacy<br/>• Cross-Chain Security
+    %% Bridge Features
+    rect rgb(240, 240, 255)
+        Note over U,T: 🌟 Bridge Features
+        Note over S,T: • 1% Bridge Fee<br/>• 12% APY Staking<br/>• Zero-Knowledge Privacy<br/>• Cross-Chain Security
     end
 ```
 
-The bridge process consists of three main phases:
-1. **Deposit Phase**: User deposits tokens on the source chain by creating a commitment
-2. **Verification Phase**: Zero-knowledge proof is generated to prove ownership
-3. **Withdrawal Phase**: User withdraws tokens on the target chain by providing the proof
+The bridge operates in three main phases:
+
+1. **Deposit Phase** 🔒
+   - User initiates a deposit on the source chain
+   - System generates a ZKP commitment
+   - Source chain locks the tokens
+
+2. **Verification Phase** 🔐
+   - ZKP verifier generates proof of ownership
+   - Process maintains user privacy
+   - Nullifier prevents double-spending
+
+3. **Withdrawal Phase** 💫
+   - User submits proof to target chain
+   - System verifies proof authenticity
+   - Target chain releases tokens
 
 ## Environment Setup
 
