@@ -21,33 +21,57 @@ NeoX now supports token swapping across **6 testnet networks**:
 
 | Network | TestVerifier Contract | BridgeWithZKP Contract |
 |---------|----------------------|------------------------|
-| **Mantle Sepolia** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
-| **Flow Testnet** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
-| **Ronin Testnet** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
-| **Flare Coston2** | `0x4a9e0967Ec003B422cbC4c42A20cd95f72Ca889f` | Deployment in progress 🔄 |
-| **Saga Test** | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` | `0x84078749748D24beE4F0159cC1c0Afe447415b5f` |
-| **Saga Demo** | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` | `0x84078749748D24beE4F0159cC1c0Afe447415b5f` |
+| **Flow Testnet** | `0xc044344e9Bd588532c93E16f55204f3C6BfF7A77` | `0x4a9e0967Ec003B422cbC4c42A20cd95f72Ca889f` |
+| **Ronin Testnet** | `0x1fe52F24cFCDAebC8166B69Ea2e8a00CAF9E70C2` | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` |
+| **Flare Coston2** | `0x734f071D9c1e3E9D102d263b0c945A873C6d02d5` | `0x1940203e347d6B33B0B4c30c2fe2cEEaB60BCE63` |
+| **SagaTest** | `0x67A5fbfaa81e4f27863C923c135b7537a502E61B` | `0xf134e8E879BA507dc263EF45632761A5cb48D2e0` |
+| **SagaDemo** | `0xE0aE21dE80e2cB9878f2c56E84A538bDbCBE8eab` | `0x67A5fbfaa81e4f27863C923c135b7537a502E61B` |
 
-*Note: Some contract addresses are the same across networks due to deterministic deployment.*
+### Network Information
 
-### Network Configuration
+#### Flow Testnet
+- Chain ID: 545
+- RPC URL: https://testnet.evm.nodes.onflow.org
+- Explorer: https://testnet.flowdiver.io
 
-| Network | Chain ID | Native Token | RPC Endpoint |
-|---------|----------|--------------|--------------|
-| Mantle Sepolia | 5003 | MNT | `https://rpc.sepolia.mantle.xyz` |
-| Flow Testnet | 545 | FLOW | `https://testnet.evm.nodes.onflow.org` |
-| Ronin Testnet | 2021 | RON | `https://saigon-testnet.roninchain.com/rpc` |
-| Flare Coston2 | 114 | C2FLR | `https://coston2-api.flare.network/ext/C/rpc` |
-| Saga Test | 2751645467413000 | SAGA | `https://sagatest-2751645467413000-1.jsonrpc.sagarpc.io` |
-| Saga Demo | 2751645565611000 | SAGAD | `https://sagademo-2751645565611000-1.jsonrpc.sagarpc.io` |
+#### Ronin Testnet
+- Chain ID: 2021
+- RPC URL: https://saigon-testnet.roninchain.com/rpc
+- Explorer: https://saigon-explorer.roninchain.com
+- Faucet: https://faucet.roninchain.com/
+
+#### Flare Coston2
+- Chain ID: 114
+- RPC URL: https://coston2-api.flare.network/ext/C/rpc
+- Explorer: https://coston2-explorer.flare.network
+- Faucet: https://coston2-faucet.towolabs.com/
+
+#### SagaTest
+- Chain ID: 2751645467413000
+- RPC URL: https://sagatest-2751645467413000-1.jsonrpc.sagarpc.io
+- Explorer: https://sagatest-2751645467413000-1.jsonrpc.sagarpc.io
+
+#### SagaDemo
+- Chain ID: 2751645565611000
+- RPC URL: https://sagademo-2751645565611000-1.jsonrpc.sagarpc.io
+- Explorer: https://sagademo-2751645565611000-1.jsonrpc.sagarpc.io
 
 ## Features
 
-- **Cross-Chain Swapping**: Easily swap tokens between 4 supported testnet blockchains.
-- **Zero-Knowledge Proofs**: Enhanced privacy and security for transactions.
-- **1:1 Token Conversion**: Simplified cross-chain swaps with 1% bridge fee.
-- **Staking**: Earn up to 12% APY by staking your tokens (coming soon).
-- **User-Friendly Interface**: Intuitive design for a smooth user experience.
+- 🔒 Secure cross-chain transfers with ZK proofs
+- 💱 Support for multiple networks
+- 🌉 User-friendly bridge interface
+- 💰 Staking functionality (coming soon)
+- 🔄 Real-time price feeds via Supra Oracle
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the app: `SKIP_PREFLIGHT_CHECK=true npm start`
+4. Connect your wallet and add the networks
+5. Get testnet tokens from the respective faucets
+6. Start bridging tokens across networks!
 
 ## Technologies Used
 
@@ -56,56 +80,6 @@ NeoX now supports token swapping across **6 testnet networks**:
 - **Ethers.js v6**: Library for interacting with Ethereum-compatible blockchains.
 - **Styled Components**: For styling React components.
 - **Hardhat 2.25.0**: Development environment for Ethereum smart contracts.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v18 or higher)
-- npm (Node Package Manager)
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/neox.git
-cd neox
-```
-
-2. Install the dependencies:
-
-```bash
-npm install --legacy-peer-deps
-```
-
-3. Set up your environment variables:
-
-Create a `.env` file in the root directory and add the following:
-
-```plaintext
-PRIVATE_KEY=your_private_key
-
-# Bridge Contract Addresses
-REACT_APP_MANTLE_SEPOLIA_VERIFIER_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
-REACT_APP_MANTLE_SEPOLIA_BRIDGE_ADDRESS=0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9
-REACT_APP_FLOW_TESTNET_VERIFIER_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
-REACT_APP_FLOW_TESTNET_BRIDGE_ADDRESS=0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9
-REACT_APP_RONIN_TESTNET_VERIFIER_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
-REACT_APP_RONIN_TESTNET_BRIDGE_ADDRESS=0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9
-REACT_APP_FLARE_TESTNET_VERIFIER_ADDRESS=your_flare_verifier_address
-REACT_APP_FLARE_TESTNET_BRIDGE_ADDRESS=your_flare_bridge_address
-```
-
-### Running the Application
-
-1. Start the development server:
-
-```bash
-npm start
-```
-
-2. Open your browser and navigate to `http://localhost:3000` or `https://neox.thedrop.top`
 
 ## 🚨 Important Information 🚨
 
