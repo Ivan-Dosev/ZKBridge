@@ -41,7 +41,7 @@ FLARE_COSTON2_BRIDGE_ADDRESS=0xf134e8E879BA507dc263EF45632761A5cb48D2e0
 SAGA_TEST_BRIDGE_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
 SAGA_DEMO_BRIDGE_ADDRESS=0xdff73b3629aeE76A77DDf575aeF5cd9D21de1217
 
-# Your private key for contract deployment (required for deploy scripts)
+# Your private key for deployment
 PRIVATE_KEY=your_private_key_here
 ```
 
@@ -159,10 +159,23 @@ node scripts/deploy-all-networks.js
 ### Deploy to Specific Networks
 
 ```bash
+# Deploy to Mantle Sepolia
 npx hardhat run scripts/deploy-multichain.js --network mantle-sepolia
+
+# Deploy to Flow Testnet
 npx hardhat run scripts/deploy-multichain.js --network flow-testnet
+
+# Deploy to Ronin Testnet
 npx hardhat run scripts/deploy-multichain.js --network ronin-testnet
+
+# Deploy to Flare Coston2
 npx hardhat run scripts/deploy-multichain.js --network flare-coston2
+
+# Deploy to Saga Test
+npx hardhat run scripts/deploy-multichain.js --network saga-test
+
+# Deploy to Saga Demo
+npx hardhat run scripts/deploy-multichain.js --network saga-demo
 ```
 
 ## Contributing
