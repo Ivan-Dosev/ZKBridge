@@ -4,20 +4,20 @@ const CMC_API_KEY = 'ec2786ad-c6e4-4703-a697-58612ef0e1fa';
 
 // Token IDs from CoinMarketCap
 const TOKEN_IDS = {
-  FLARE: '23793',    // FLR - Flare
   SAGA: '28004',     // SAGA - Saga
+  FLOW: '4558',      // FLOW - Flow
   MANTLE: '27075',   // MNT - Mantle
   RONIN: '14101',    // RON - Ronin
-  FLOW: '4558'       // FLOW - Flow
+  SAGAD: '28004'     // SAGAD - Using same ID as SAGA for demo
 };
 
 // Fallback prices in case API fails
 const FALLBACK_PRICES = {
-  FLARE: 0.0167,     // Updated based on current price
   SAGA: 0.20,        // Updated to correct current price
+  FLOW: 0.31,        // Updated based on current price
   MANTLE: 0.56,      // Updated based on current price
   RONIN: 0.48,       // Updated based on current price
-  FLOW: 0.31         // Updated based on current price
+  SAGAD: 0.20        // Same as SAGA for demo
 };
 
 export const fetchTokenPrices = async () => {

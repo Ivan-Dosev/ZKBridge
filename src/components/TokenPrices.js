@@ -78,11 +78,11 @@ const ErrorMessage = styled.div`
 `;
 
 const DEFAULT_PRICES = {
-  FLR: 0.0167,
   SAGA: 0.20,
+  FLOW: 0.31,
   MNT: 0.56,
   RON: 0.48,
-  FLOW: 0.31
+  SAGAD: 0.20
 };
 
 const TokenPrices = () => {
@@ -141,11 +141,11 @@ const TokenPrices = () => {
           <ErrorMessage>{error}</ErrorMessage>
         ) : (
           <PriceGrid>
-            {renderPrice('FLR')}
             {renderPrice('SAGA')}
+            {renderPrice('FLOW')}
             {renderPrice('MNT')}
             {renderPrice('RON')}
-            {renderPrice('FLOW')}
+            {renderPrice('SAGAD')}
           </PriceGrid>
         )}
       </PricesContainer>

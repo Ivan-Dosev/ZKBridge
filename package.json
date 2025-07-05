@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.6",
+    "@sky-mavis/tanto-widget": "^0.0.2",
+    "@tanstack/react-query": "^5.81.5",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "ajv": "^8.17.1",
@@ -38,7 +40,9 @@
     "react-scripts": "5.0.1",
     "snarkjs": "^0.7.5",
     "styled-components": "^5.3.9",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "viem": "2.x",
+    "wagmi": "^2.15.6"
   },
   "browserslist": {
     "production": [

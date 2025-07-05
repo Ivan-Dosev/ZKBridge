@@ -10,6 +10,20 @@ import TokenPrices from './components/TokenPrices';
 // Token data with all supported networks
 export const tokens = [
   {
+    symbol: 'SAGA',
+    name: 'SagaTest',
+    network: 'saga-test',
+    chainId: '0x9c69b62a20a08', // SagaTest chain ID (2751645467413000)
+    bridgeAddress: process.env.REACT_APP_SAGA_TEST_BRIDGE_ADDRESS
+  },
+  {
+    symbol: 'FLOW',
+    name: 'Flow Testnet',
+    network: 'flow-testnet',
+    chainId: '0x221', // Flow Testnet chain ID (545)
+    bridgeAddress: process.env.REACT_APP_FLOW_TESTNET_BRIDGE_ADDRESS
+  },
+  {
     symbol: 'MNT',
     name: 'Mantle Sepolia',
     network: 'mantle-sepolia',
@@ -22,27 +36,6 @@ export const tokens = [
     network: 'ronin-testnet',
     chainId: '0x7e5', // Ronin Testnet chain ID (2021)
     bridgeAddress: process.env.REACT_APP_RONIN_TESTNET_BRIDGE_ADDRESS
-  },
-  {
-    symbol: 'FLR',
-    name: 'Flare Testnet',
-    network: 'flare-testnet',
-    chainId: '0x72', // Flare Coston2 chain ID (114)
-    bridgeAddress: process.env.REACT_APP_FLARE_TESTNET_BRIDGE_ADDRESS
-  },
-  {
-    symbol: 'FLOW',
-    name: 'Flow Testnet',
-    network: 'flow-testnet',
-    chainId: '0x221', // Flow Testnet chain ID (545)
-    bridgeAddress: process.env.REACT_APP_FLOW_TESTNET_BRIDGE_ADDRESS
-  },
-  {
-    symbol: 'SAGA',
-    name: 'SagaTest',
-    network: 'saga-test',
-    chainId: '0x9c69b62a20a08', // SagaTest chain ID (2751645467413000)
-    bridgeAddress: process.env.REACT_APP_SAGA_TEST_BRIDGE_ADDRESS
   },
   {
     symbol: 'SAGAD',
