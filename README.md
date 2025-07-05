@@ -256,33 +256,6 @@ Contributions are welcome! Please follow these steps:
 
 This section describes the process of swapping tokens between different chains using our application.
 
-## Sequence Diagram
-```mermaid
-sequenceDiagram
-participant User
-participant Wallet
-participant SwapInterface
-participant SourceBridge
-participant TargetBridge
-User->>SwapInterface: Input amount and select tokens
-SwapInterface->>SwapInterface: Calculate fee (1%)
-SwapInterface->>SwapInterface: Calculate output amount (1:1 - fee)
-SwapInterface->>User: Display output amount
-User->>SwapInterface: Click "Swap" button
-SwapInterface->>Wallet: Request wallet connection
-Wallet-->>SwapInterface: Wallet connected
-SwapInterface->>SwapInterface: Generate ZK Proof
-SwapInterface->>SwapInterface: Switch to source network
-SwapInterface->>SourceBridge: Deposit tokens
-SwapInterface->>SourceBridge: deposit(commitment, { value: transferAmount })
-SourceBridge-->>SwapInterface: Transaction confirmed
-SwapInterface->>SwapInterface: Switch to target network
-SwapInterface->>TargetBridge: Withdraw tokens
-SwapInterface->>TargetBridge: withdraw(targetAmount, address, nullifierHash, proof)
-TargetBridge-->>SwapInterface: Transaction confirmed
-SwapInterface->>User: Display success message
-```
-
 ## Roadmap 🗺️
 
 1. **Cross-Chain Integration** : Add support for additional blockchains to broaden token swapping capabilities.
