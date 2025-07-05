@@ -5,6 +5,7 @@ import { ethers } from 'ethers';
 import SwapInterface from './components/SwapInterface';
 import WalletConnect from './components/WalletConnect';
 import Web3ErrorBoundary from './components/Web3ErrorBoundary';
+import TokenPrices from './components/TokenPrices';
 
 // Token data with all supported networks
 export const tokens = [
@@ -79,14 +80,17 @@ function App() {
     <Web3ErrorBoundary>
       <Web3ReactProvider getLibrary={getLibrary}>
         <AppContainer>
-          <WalletConnect />
-          <SwapInterface
-            availableTokens={tokens}
-            selectedTokens={selectedTokens}
-            onTokenSelect={handleTokenSelect}
-            setSelectedTokens={setSelectedTokens}
-            style={{ alignSelf: 'flex-start' }}
-          />
+          <ContentContainer>
+            <WalletConnect />
+            <TokenPrices />
+            <SwapInterface
+              availableTokens={tokens}
+              selectedTokens={selectedTokens}
+              onTokenSelect={handleTokenSelect}
+              setSelectedTokens={setSelectedTokens}
+              style={{ alignSelf: 'flex-start' }}
+            />
+          </ContentContainer>
         </AppContainer>
       </Web3ReactProvider>
     </Web3ErrorBoundary>
@@ -101,6 +105,25 @@ const AppContainer = styled.div`
   background: #13141b;
   padding: 20px;
   position: relative;
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 800px;
+  width: 100%;
+
+  > * {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* Price bar should be full width */
+  > *:nth-child(2) {
+    max-width: 800px;
+  }
 `;
 
 export default App; 

@@ -171,31 +171,40 @@ const WalletConnect = () => {
       onClick={active ? deactivate : connectWallet}
       data-wallet-connect
     >
-      {active ? `Connected: ${accountState?.substring(0, 6)}...${accountState?.substring(accountState.length - 4)}` : 'Connect Wallet'}
+      {active ? accountState?.substring(0, 6) : 'Connect'}
     </ConnectButton>
   );
 };
 
 const ConnectButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  color: white;
-  font-weight: 600;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 242, 254, 0.15);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: #00f2fe;
+  font-size: 9px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  min-width: 0;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.3);
-  }
-
-  &:active {
-    transform: translateY(0);
+    background: rgba(0, 242, 254, 0.25);
+    border-color: rgba(0, 242, 254, 0.3);
   }
 `;
 

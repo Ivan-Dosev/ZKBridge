@@ -10,8 +10,8 @@ const SwapContainer = styled.div`
   background-color: rgba(19, 20, 27, 0.7);
   border-radius: 16px;
   padding: 30px;
-  max-width: 440px;
-  margin: 0;
+  width: 100%;
+  margin: 0 auto;
   backdrop-filter: blur(12px);
   box-shadow: 
     0 4px 24px -1px rgba(0, 0, 0, 0.2),
