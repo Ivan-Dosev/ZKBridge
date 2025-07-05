@@ -4,73 +4,6 @@
 
 ZKBridge is a decentralized application (dApp) that allows users to seamlessly swap tokens across multiple blockchains. With a focus on security and user experience, ZKBridge leverages Zero-Knowledge Proofs (ZKPs) to ensure that transactions are both private and verifiable.
 
-## Flow Diagram
-
-Below is a simplified visualization of the cross-chain bridge process:
-
-```mermaid
-graph TB
-    subgraph "🔄 Cross-Chain Bridge Process"
-        subgraph "1️⃣ Deposit Phase" 
-            A[User] -->|Initiate deposit| B[Source Chain]
-            B -->|Lock tokens| C[Generate ZKP commitment]
-            C -->|Confirm deposit| A
-        end
-
-        subgraph "2️⃣ Verification Phase"
-            D[User] -->|Request proof| E[ZKP Verifier]
-            E -->|Generate proof| F[Return proof & nullifier]
-            F -->|Prove ownership| D
-        end
-
-        subgraph "3️⃣ Withdrawal Phase"
-            G[User] -->|Submit withdrawal| H[Target Chain]
-            H -->|Verify proof| I[Check nullifier]
-            I -->|Process withdrawal| J[Release tokens]
-            J -->|Complete| G
-        end
-
-        subgraph "🌟 Bridge Features"
-            K[1% Bridge Fee]
-            L[12% APY Staking]
-            M[Zero-Knowledge Privacy]
-            N[Cross-Chain Security]
-        end
-    end
-
-    style A fill:#e6f0ff,stroke:#4facfe
-    style B fill:#e6f0ff,stroke:#4facfe
-    style C fill:#e6f0ff,stroke:#4facfe
-    style D fill:#ffe6e6,stroke:#ff9999
-    style E fill:#ffe6e6,stroke:#ff9999
-    style F fill:#ffe6e6,stroke:#ff9999
-    style G fill:#e6ffe6,stroke:#66cc66
-    style H fill:#e6ffe6,stroke:#66cc66
-    style I fill:#e6ffe6,stroke:#66cc66
-    style J fill:#e6ffe6,stroke:#66cc66
-    style K fill:#f0f0ff,stroke:#9999ff
-    style L fill:#f0f0ff,stroke:#9999ff
-    style M fill:#f0f0ff,stroke:#9999ff
-    style N fill:#f0f0ff,stroke:#9999ff
-```
-
-The bridge operates in three main phases:
-
-1. **Deposit Phase** 🔒
-   - User initiates a deposit on the source chain
-   - System generates a ZKP commitment
-   - Source chain locks the tokens
-
-2. **Verification Phase** 🔐
-   - ZKP verifier generates proof of ownership
-   - Process maintains user privacy
-   - Nullifier prevents double-spending
-
-3. **Withdrawal Phase** 💫
-   - User submits proof to target chain
-   - System verifies proof authenticity
-   - Target chain releases tokens
-
 ## Environment Setup
 
 Create a `.env` file in the project root with the following configuration:
@@ -254,6 +187,73 @@ Contributions are welcome! Please follow these steps:
 3. Make your changes and commit them (`git commit -m 'Add some feature'`).
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Open a pull request.
+
+## Flow Diagram
+
+Below is a simplified visualization of the cross-chain bridge process:
+
+```mermaid
+graph TB
+    subgraph "🔄 Cross-Chain Bridge Process"
+        subgraph "1️⃣ Deposit Phase" 
+            A[User] -->|Initiate deposit| B[Source Chain]
+            B -->|Lock tokens| C[Generate ZKP commitment]
+            C -->|Confirm deposit| A
+        end
+
+        subgraph "2️⃣ Verification Phase"
+            D[User] -->|Request proof| E[ZKP Verifier]
+            E -->|Generate proof| F[Return proof & nullifier]
+            F -->|Prove ownership| D
+        end
+
+        subgraph "3️⃣ Withdrawal Phase"
+            G[User] -->|Submit withdrawal| H[Target Chain]
+            H -->|Verify proof| I[Check nullifier]
+            I -->|Process withdrawal| J[Release tokens]
+            J -->|Complete| G
+        end
+
+        subgraph "🌟 Bridge Features"
+            K[1% Bridge Fee]
+            L[12% APY Staking]
+            M[Zero-Knowledge Privacy]
+            N[Cross-Chain Security]
+        end
+    end
+
+    style A fill:#e6f0ff,stroke:#4facfe
+    style B fill:#e6f0ff,stroke:#4facfe
+    style C fill:#e6f0ff,stroke:#4facfe
+    style D fill:#ffe6e6,stroke:#ff9999
+    style E fill:#ffe6e6,stroke:#ff9999
+    style F fill:#ffe6e6,stroke:#ff9999
+    style G fill:#e6ffe6,stroke:#66cc66
+    style H fill:#e6ffe6,stroke:#66cc66
+    style I fill:#e6ffe6,stroke:#66cc66
+    style J fill:#e6ffe6,stroke:#66cc66
+    style K fill:#f0f0ff,stroke:#9999ff
+    style L fill:#f0f0ff,stroke:#9999ff
+    style M fill:#f0f0ff,stroke:#9999ff
+    style N fill:#f0f0ff,stroke:#9999ff
+```
+
+The bridge operates in three main phases:
+
+1. **Deposit Phase** 🔒
+   - User initiates a deposit on the source chain
+   - System generates a ZKP commitment
+   - Source chain locks the tokens
+
+2. **Verification Phase** 🔐
+   - ZKP verifier generates proof of ownership
+   - Process maintains user privacy
+   - Nullifier prevents double-spending
+
+3. **Withdrawal Phase** 💫
+   - User submits proof to target chain
+   - System verifies proof authenticity
+   - Target chain releases tokens
 
 # Token Swap Process
 
