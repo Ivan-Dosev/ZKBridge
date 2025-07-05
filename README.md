@@ -4,6 +4,47 @@
 
 NeoX is a decentralized application (dApp) that allows users to seamlessly swap tokens across multiple blockchains. With a focus on security and user experience, NeoX leverages Zero-Knowledge Proofs (ZKPs) to ensure that transactions are both private and verifiable.
 
+## Environment Setup
+
+Create a `.env` file in the project root with the following configuration:
+
+```env
+# Network RPC URLs
+MANTLE_SEPOLIA_RPC_URL=https://rpc.sepolia.mantle.xyz
+FLOW_TESTNET_RPC_URL=https://testnet.evm.nodes.onflow.org
+RONIN_TESTNET_RPC_URL=https://saigon-testnet.roninchain.com/rpc
+FLARE_COSTON2_RPC_URL=https://coston2-api.flare.network/ext/C/rpc
+SAGA_TEST_RPC_URL=https://sagatest-2751645467413000-1.jsonrpc.sagarpc.io
+SAGA_DEMO_RPC_URL=https://sagademo-2751645565611000-1.jsonrpc.sagarpc.io
+
+# Chain IDs
+MANTLE_SEPOLIA_CHAIN_ID=5003
+FLOW_TESTNET_CHAIN_ID=545
+RONIN_TESTNET_CHAIN_ID=2021
+FLARE_COSTON2_CHAIN_ID=114
+SAGA_TEST_CHAIN_ID=2751645467413000
+SAGA_DEMO_CHAIN_ID=2751645565611000
+
+# Contract Addresses - TestVerifier
+MANTLE_SEPOLIA_VERIFIER_ADDRESS=0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02
+FLOW_TESTNET_VERIFIER_ADDRESS=0x5933761F56C00688405347Bb5e327B296FCE25E4
+RONIN_TESTNET_VERIFIER_ADDRESS=0x485DDf8cFDE358Fa400999d27397bAa527715b66
+FLARE_COSTON2_VERIFIER_ADDRESS=0x67A5fbfaa81e4f27863C923c135b7537a502E61B
+SAGA_TEST_VERIFIER_ADDRESS=0xdff73b3629aeE76A77DDf575aeF5cd9D21de1217
+SAGA_DEMO_VERIFIER_ADDRESS=0x42fEB86470b4118224f79AF2d82C22c7EDFC750c
+
+# Contract Addresses - BridgeWithZKP
+MANTLE_SEPOLIA_BRIDGE_ADDRESS=0x84078749748D24beE4F0159cC1c0Afe447415b5f
+FLOW_TESTNET_BRIDGE_ADDRESS=0xfa240B732d2F48DB535cec3780Edb9Cb6d36346A
+RONIN_TESTNET_BRIDGE_ADDRESS=0x27993cc63d51eE82acfde8b1f05D3b731fE194AC
+FLARE_COSTON2_BRIDGE_ADDRESS=0xf134e8E879BA507dc263EF45632761A5cb48D2e0
+SAGA_TEST_BRIDGE_ADDRESS=0x836595601F67F7C2AA997d722DFb55886684d1C5
+SAGA_DEMO_BRIDGE_ADDRESS=0xdff73b3629aeE76A77DDf575aeF5cd9D21de1217
+
+# Your private key for contract deployment (required for deploy scripts)
+PRIVATE_KEY=your_private_key_here
+```
+
 ## Supported Networks
 
 NeoX now supports token swapping across **6 testnet networks**:
@@ -21,7 +62,7 @@ NeoX now supports token swapping across **6 testnet networks**:
 
 | Network | TestVerifier Contract | BridgeWithZKP Contract |
 |---------|----------------------|------------------------|
-| **Mantle Sepolia** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
+| **Mantle Sepolia** | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` | `0x84078749748D24beE4F0159cC1c0Afe447415b5f` |
 | **Flow Testnet** | `0x5933761F56C00688405347Bb5e327B296FCE25E4` | `0xfa240B732d2F48DB535cec3780Edb9Cb6d36346A` |
 | **Ronin Testnet** | `0x485DDf8cFDE358Fa400999d27397bAa527715b66` | `0x27993cc63d51eE82acfde8b1f05D3b731fE194AC` |
 | **Flare Coston2** | `0x67A5fbfaa81e4f27863C923c135b7537a502E61B` | `0xf134e8E879BA507dc263EF45632761A5cb48D2e0` |
