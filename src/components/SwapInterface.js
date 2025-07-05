@@ -7,31 +7,33 @@ import { generateZKProof } from '../utils/zkp';
 import bridgeABIJson from '../abis/BridgeWithZKP.json';
 
 const SwapContainer = styled.div`
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-  padding: 20px;
-  max-width: 400px;
+  background-color: rgba(19, 20, 27, 0.7);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 440px;
   margin: 0;
   backdrop-filter: blur(12px);
   box-shadow: 
     0 4px 24px -1px rgba(0, 0, 0, 0.2),
     0 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 40px -10px rgba(33, 114, 229, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: box-shadow 0.3s ease;
+    0 0 40px -10px rgba(0, 242, 254, 0.4);
+  border: 1px solid rgba(0, 242, 254, 0.1);
+  transition: all 0.3s ease;
 
   &:hover {
     box-shadow: 
       0 4px 28px -1px rgba(0, 0, 0, 0.2),
       0 0 1px 0 rgba(255, 255, 255, 0.1),
-      0 0 50px -10px rgba(33, 114, 229, 0.4);
+      0 0 50px -10px rgba(0, 242, 254, 0.5);
+    border-color: rgba(0, 242, 254, 0.2);
+    transform: translateY(-2px);
   }
 `;
 
 const SwapHeader = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   align-items: center;
   position: relative;
 
@@ -40,11 +42,11 @@ const SwapHeader = styled.div`
     position: absolute;
     bottom: -10px;
     left: 50%;
-    width: 60px;
-    height: 1px;
+    width: 80px;
+    height: 2px;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      rgba(0, 242, 254, 0.5) 50%, 
+      rgba(0, 242, 254, 0.8) 50%, 
       transparent 100%
     );
     transform: translateX(-50%);
@@ -52,16 +54,16 @@ const SwapHeader = styled.div`
 `;
 
 const Title = styled.h2`
-  color: rgba(0, 242, 254, 0.8);
+  color: #00f2fe;
   margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 4px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 6px;
   text-transform: uppercase;
   font-family: 'Inter', monospace;
-  text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+  text-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
   position: relative;
-  padding: 0 20px;
+  padding: 0 30px;
   text-align: center;
   flex: 1;
 
@@ -70,7 +72,7 @@ const Title = styled.h2`
     content: '';
     position: absolute;
     top: 50%;
-    width: 15px;
+    width: 20px;
     height: 2px;
     background: linear-gradient(90deg, #00f2fe 0%, transparent 100%);
     transform: translateY(-50%);
@@ -801,7 +803,7 @@ const SwapInterface = ({ availableTokens, selectedTokens, onTokenSelect }) => {
   return (
     <SwapContainer>
       <SwapHeader>
-        <Title>Swap</Title>
+        <Title>ZK Swap</Title>
       </SwapHeader>
 
       <TokenInput
