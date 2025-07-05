@@ -6,12 +6,14 @@ NeoX is a decentralized application (dApp) that allows users to seamlessly swap 
 
 ## Supported Networks
 
-NeoX now supports token swapping across **4 testnet networks**:
+NeoX now supports token swapping across **6 testnet networks**:
 
 - **Mantle Sepolia** (Mantle Testnet)
 - **Flow Testnet** (Flow EVM Testnet)
 - **Ronin Testnet** (Saigon Testnet)
 - **Flare Coston2** (Flare Testnet)
+- **Saga Test** (Saga Testnet)
+- **Saga Demo** (Saga Demo Network)
 
 ## Smart Contract Addresses
 
@@ -22,7 +24,9 @@ NeoX now supports token swapping across **4 testnet networks**:
 | **Mantle Sepolia** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
 | **Flow Testnet** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
 | **Ronin Testnet** | `0x836595601F67F7C2AA997d722DFb55886684d1C5` | `0x6Ba4f5b055C57BAd4C05eC0E45Ac078c5E59d9C9` |
-| **Flare Coston2** | Pending deployment 🔄 | Pending deployment 🔄 |
+| **Flare Coston2** | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` | `0x84078749748D24beE4F0159cC1c0Afe447415b5f` |
+| **Saga Test** | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` | `0x84078749748D24beE4F0159cC1c0Afe447415b5f` |
+| **Saga Demo** | `0x0DD6ca362B7Dd67750b17Ed8955F86E44f588f02` | `0x84078749748D24beE4F0159cC1c0Afe447415b5f` |
 
 *Note: Some contract addresses are the same across networks due to deterministic deployment.*
 
@@ -34,6 +38,8 @@ NeoX now supports token swapping across **4 testnet networks**:
 | Flow Testnet | 545 | FLOW | `https://testnet.evm.nodes.onflow.org` |
 | Ronin Testnet | 2021 | RON | `https://saigon-testnet.roninchain.com/rpc` |
 | Flare Coston2 | 114 | C2FLR | `https://coston2-api.flare.network/ext/C/rpc` |
+| Saga Test | 2751645467413000 | SAGA | `https://sagatest-2751645467413000-1.jsonrpc.sagarpc.io` |
+| Saga Demo | 2751645565611000 | SAGAD | `https://sagademo-2751645565611000-1.jsonrpc.sagarpc.io` |
 
 ## Features
 
