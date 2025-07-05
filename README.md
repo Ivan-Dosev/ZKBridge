@@ -1,8 +1,8 @@
-# NeoX - Cross-Chain Token Bridge
+# ZKBridge - Cross-Chain Token Bridge
 
 ## Overview
 
-NeoX is a decentralized application (dApp) that allows users to seamlessly swap tokens across multiple blockchains. With a focus on security and user experience, NeoX leverages Zero-Knowledge Proofs (ZKPs) to ensure that transactions are both private and verifiable.
+ZKBridge is a decentralized application (dApp) that allows users to seamlessly swap tokens across multiple blockchains. With a focus on security and user experience, ZKBridge leverages Zero-Knowledge Proofs (ZKPs) to ensure that transactions are both private and verifiable.
 
 ## Environment Setup
 
@@ -47,7 +47,7 @@ PRIVATE_KEY=your_private_key_here
 
 ## Supported Networks
 
-NeoX now supports token swapping across **6 testnet networks**:
+ZKBridge now supports token swapping across **6 testnet networks**:
 
 - **Mantle Sepolia** (Mantle Testnet)
 - **Flow Testnet** (Flow EVM Testnet)
@@ -118,7 +118,7 @@ NeoX now supports token swapping across **6 testnet networks**:
 ## Technologies Used
 
 - **React**: Frontend framework for building the user interface.
-- **Zero-Knowledge Proofs (ZKPs)**: A cryptographic method used to enhance privacy and security in transactions. ZKPs allow one party to prove to another that a statement is true without revealing any additional information. In NeoX, ZKPs are used to ensure that token swaps are secure and private.
+- **Zero-Knowledge Proofs (ZKPs)**: A cryptographic method used to enhance privacy and security in transactions. ZKPs allow one party to prove to another that a statement is true without revealing any additional information. In ZKBridge, ZKPs are used to ensure that token swaps are secure and private.
 - **Ethers.js v6**: Library for interacting with Ethereum-compatible blockchains.
 - **Styled Components**: For styling React components.
 - **Hardhat 2.25.0**: Development environment for Ethereum smart contracts.
